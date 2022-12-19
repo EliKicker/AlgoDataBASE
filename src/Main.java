@@ -1,16 +1,16 @@
 import Algorithms.GraphAlgorithms.*;
+import Algorithms.*;
 import Algorithms.SearchAlgorithms.*;
 import Algorithms.SortAlgorithms.*;
 import util.MakeArray;
 import util.MakeGraph;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         ArrayList<ArrayList<Integer>> G = MakeGraph.getAdjListUnweighted("src/util/test_input/UnweightedGraph1");
         DFS.DFS_recursive(G, 0);
         System.out.println();

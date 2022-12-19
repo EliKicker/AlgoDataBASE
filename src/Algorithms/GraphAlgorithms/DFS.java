@@ -19,7 +19,7 @@ public class DFS {
 
         while (stack.size() != 0) {
             int v = stack.pop();
-            System.out.println("node: " + v);
+
             for (int i : G.get(v)) {
                 if (!visited[i]) {
                     visited[i] = true;
@@ -39,7 +39,7 @@ public class DFS {
 
     private static void DFS_walk(ArrayList<ArrayList<Integer>> G, int x, boolean[] visited) {
         visited[x] = true;
-        System.out.println("node: " + x);
+
         for (int i : G.get(x)) {
             if (!visited[i]) {
                 DFS_walk(G, i, visited);

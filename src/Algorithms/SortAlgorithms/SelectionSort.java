@@ -1,7 +1,7 @@
 package Algorithms.SortAlgorithms;
 
 /*
-    SELECTION SORt ALGORITHM
+    SELECTION SORT ALGORITHM
  */
 
 public class SelectionSort {

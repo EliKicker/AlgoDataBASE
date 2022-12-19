@@ -19,7 +19,7 @@ public class BFS {
 
         while (queue.size() != 0) {
             int v = queue.poll();
-            System.out.println("node: " + v);
+
             for (int i : G.get(v)) {
                 if (!visited[i]) {
                     visited[i] = true;

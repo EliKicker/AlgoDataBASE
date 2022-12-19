@@ -1,7 +1,7 @@
 package Datastructures.AVL;
 
 /*
-    AVL Tree
+    AVL TREE
  */
 
 public class AVLTree {
