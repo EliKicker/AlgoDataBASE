@@ -23,8 +23,8 @@ public class Main {
         System.out.println(Arrays.toString(A));
         int[] B = MakeArray.getArray("src/util/test_input/ArrayWithDuplicates1");
         System.out.println(Arrays.toString(B));
-        HeapSort.heapSort(A);
-        HeapSort.heapSort(B);
+        QuickSort.quickSort(A, 0, A.length - 1);
+        QuickSort.quickSort(B, 0, B.length - 1);
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
     }
