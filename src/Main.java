@@ -2,6 +2,7 @@ import Algorithms.GraphAlgorithms.*;
 import Algorithms.*;
 import Algorithms.SearchAlgorithms.*;
 import Algorithms.SortAlgorithms.*;
+import Datastructures.*;
 import util.MakeArray;
 import util.MakeGraph;
 
@@ -22,8 +23,8 @@ public class Main {
         System.out.println(Arrays.toString(A));
         int[] B = MakeArray.getArray("src/util/test_input/ArrayWithDuplicates1");
         System.out.println(Arrays.toString(B));
-        InsertionSort.insertionSort(A);
-        InsertionSort.insertionSort(B);
+        HeapSort.heapSort(A);
+        HeapSort.heapSort(B);
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
     }

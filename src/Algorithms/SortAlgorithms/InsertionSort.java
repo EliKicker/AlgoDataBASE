@@ -19,7 +19,7 @@ public class InsertionSort {
         }
     }
 
-    public static int binarySearch(int[] A, int l, int r, int x) {
+    private static int binarySearch(int[] A, int l, int r, int x) {
         if (l > r) return l;
         int m = l + ((r - l) >> 1);
         if (A[m] == x) return m;

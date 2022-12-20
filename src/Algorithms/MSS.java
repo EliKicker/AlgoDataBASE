@@ -6,6 +6,8 @@ package Algorithms;
 
 public class MSS {
 
+    //maximum subarray sum algorithm
+    //Runtime: O(n)
     public static int MSS(int[] A) {
         int mss = 0;
         int tmp = 0;
