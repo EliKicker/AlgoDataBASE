@@ -3,6 +3,7 @@ import Algorithms.*;
 import Algorithms.SearchAlgorithms.*;
 import Algorithms.SortAlgorithms.*;
 import Datastructures.*;
+import Datastructures.Graphs.UnionFind;
 import util.MakeArray;
 import util.MakeGraph;
 
