@@ -1,4 +1,4 @@
-package Datastructures.Graphs;
+package Datastructures;
 
 /*
     BINARY SEARCH TREE

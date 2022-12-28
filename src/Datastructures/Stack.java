@@ -9,16 +9,22 @@ public class Stack<T> {
     Node<T> first;
     int size;
 
+    //init Stack
+    //Runtime: O(1)
     public Stack() {
         first = null;
         size = 0;
     }
 
+    //push element onto Stack
+    //Runtime: O(1)
     public void push(T element) {
         first = new Node<>(element, first);
         size++;
     }
 
+    //pop element from Stack
+    //Runtime: O(1)
     public T pop() {
         if (size == 0) throw new RuntimeException("Cannot pop element from stack as it is empty!");
         T val = first.val;
@@ -27,15 +33,21 @@ public class Stack<T> {
         return val;
     }
 
+    //peek element from Stack
+    //Runtime: O(1)
     public T peek() {
         if (size == 0) throw new RuntimeException("Cannot peek element from stack as it is empty!");
         return first.val;
     }
 
+    //get size of Stack
+    //Runtime: O(1)
     public int size() {
         return size;
     }
 
+    //check if Stack is empty
+    //Runtime: O(1)
     public boolean isEmpty() {
         return size == 0;
     }

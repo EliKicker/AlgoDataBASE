@@ -1,4 +1,4 @@
-package Datastructures.Graphs.AVL;
+package Datastructures;
 
 /*
     AVL TREE
