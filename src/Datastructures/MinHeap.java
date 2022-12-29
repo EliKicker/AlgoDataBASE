@@ -5,28 +5,58 @@ package Datastructures;
  */
 
 //no avl condition needed as a heap is at every time either an almost complete tree or a complete tree
-public class MinHeap<T> {
+public class MinHeap<T extends Comparable<T>> {
 
-    Node<T> head;
+    Object[] nodes;
     int size;
 
     //init MinHeap
     //Runtime: O(1)
-    public MinHeap() {
-        head = null;
+    public MinHeap(int capacity) {
+        nodes = new Object[capacity];
         size = 0;
     }
 
     //insert element into MinHeap
-    //Runtime: O(h)
+    //Runtime: O(log n)
+    @SuppressWarnings("unchecked")
     public void insert(T element) {
-
+        if (nodes.length > size) {
+            nodes[size] = element;
+            int i = size;
+            while (i != 0 && ((T) nodes[(i - 1) >> 1]).compareTo(element) > 0) {
+                swap(i, (i - 1) >> 1);
+                i = (i - 1) >> 1;
+            }
+            size++;
+        }
     }
 
-    //extract max element from MinHeap
-    //Runtime: O(1)
+    //extract min element from MinHeap
+    //Runtime: O(log n)
+    @SuppressWarnings("unchecked")
     public T extractMin() {
-        return null;
+        if (isEmpty()) return null;
+        T val = (T) nodes[0];
+        swap(0, size - 1);
+        nodes[size - 1] = null;
+        int i = 0;
+        while ((i << 1) + 1 <= size - 2) {
+            int j = (i << 1) + 1;
+            if (j + 1 <= size - 2 && ((T) nodes[j]).compareTo((T) nodes[j + 1]) > 0) j++;
+            if (((T) nodes[i]).compareTo((T) nodes[j]) <= 0) break;
+            swap(i, j);
+            i = j;
+        }
+        size--;
+        return val;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void swap(int a, int b) {
+        T tmp = (T) nodes[a];
+        nodes[a] = nodes[b];
+        nodes[b] = tmp;
     }
 
     //get size of MinHeap
@@ -43,15 +73,13 @@ public class MinHeap<T> {
 
     @Override
     public String toString() {
-        return null;
-    }
-
-    private class Node<E> {
-        E val;
-        Node<E> next;
-
-        Node(E val) {
-            this.val = val;
+        if (isEmpty()) return "[]";
+        String s = "[" + nodes[0];
+        int i = 1;
+        while (i < size) {
+            s = s + ", " + nodes[i];
+            i++;
         }
+        return s + "]";
     }
 }
