@@ -28,13 +28,5 @@ public class Main {
         //QuickSort.quickSort(B, 0, B.length - 1);
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
-
-
-        BST<Integer> bst = new BST<>();
-
-        for (int i = 0; i < 100; i++) {
-            bst.insert(B[i]);
-        }
-        System.out.println(bst);
     }
 }

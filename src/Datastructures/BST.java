@@ -4,6 +4,7 @@ package Datastructures;
     BINARY SEARCH TREE
  */
 
+//BST with no duplicates allowed
 public class BST<T extends Comparable<T>> {
 
     Node<T> root;
@@ -45,7 +46,65 @@ public class BST<T extends Comparable<T>> {
     //deletes element in BST (if it exists)
     //Runtime: O(n)
     public void delete(T key) {
-
+        Node<T> node = search(key);
+        if (node == null) return;
+        if (node.right == null) {
+            if (node.left == null) {
+                if (node == root) {
+                    root = null;
+                } else {
+                    if (node.parent.left == node) {
+                        node.parent.left = null;
+                    } else {
+                        node.parent.right = null;
+                    }
+                }
+            } else {
+                if (node == root) {
+                    root = node.left;
+                    root.parent = null;
+                } else {
+                    if (node.parent.left == node) {
+                        node.parent.left = node.left;
+                    } else {
+                        node.parent.right = node.left;
+                    }
+                    node.left.parent = node.parent;
+                }
+            }
+        } else {
+            if (node.left == null) {
+                if (node == root) {
+                    root = node.right;
+                    root.parent = null;
+                } else {
+                    if (node.parent.left == node) {
+                        node.parent.left = node.right;
+                    } else {
+                        node.parent.right = node.right;
+                    }
+                    node.right.parent = node.parent;
+                }
+            } else {
+                Node<T> swap = node.left;
+                while (swap.right != null) swap = swap.right;
+                node.key = swap.key;
+                if (swap.left != null) {
+                    if (swap.parent.left == swap) {
+                        swap.parent.left = swap.left;
+                    } else {
+                        swap.parent.right = swap.left;
+                    }
+                    swap.left.parent = swap.parent;
+                } else {
+                    if (swap.parent.left == swap) {
+                        swap.parent.left = null;
+                    } else {
+                        swap.parent.right = null;
+                    }
+                }
+            }
+        }
     }
 
     //searches for given key in BST
@@ -58,19 +117,32 @@ public class BST<T extends Comparable<T>> {
     private Node<T> search(Node<T> node, T key) {
         if (node == null) return null;
         if (node.key.compareTo(key) == 0) return node;
-        if (node.key.compareTo(key) > 0) {
-            return search(node.left, key);
-        } else {
-            return search(node.right, key);
-        }
+        if (node.key.compareTo(key) > 0) return search(node.left, key);
+        return search(node.right, key);
     }
 
     @Override
     public String toString() {
-        if (root == null) return "";
-        StringBuilder buffer = new StringBuilder();
-        root.print(buffer, "", "");
-        return buffer.toString();
+        StringBuilder sb = new StringBuilder();
+        Print(sb, root, "", "");
+        return sb.toString();
+    }
+
+    private void Print(StringBuilder sb, Node<T> node, String prefix, String childrenPrefix) {
+        if (node == null) return;
+        if (prefix.endsWith("┌──")) {
+            Print(sb, node.right, childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   ┌──", childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   │  ");
+        } else {
+            Print(sb, node.right, childrenPrefix + "┌──", childrenPrefix + "│  ");
+        }
+        sb.append(prefix);
+        sb.append(node.key);
+        sb.append("\n");
+        if (prefix.endsWith("└──")) {
+            Print(sb, node.left, childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   └──", childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   │  ");
+        } else {
+            Print(sb, node.left, childrenPrefix + "└──", childrenPrefix + "│  ");
+        }
     }
 
     private class Node<E extends Comparable<E>> {
@@ -82,24 +154,6 @@ public class BST<T extends Comparable<T>> {
 
         Node(E key) {
             this.key = key;
-        }
-
-        void print(StringBuilder buffer, String prefix, String childrenPrefix) {
-            buffer.append(prefix);
-            buffer.append(key.toString());
-            buffer.append("\n");
-            if (right != null) {
-                if (left != null) {
-                    right.print(buffer, childrenPrefix + "├── ", childrenPrefix + "│   ");
-                    left.print(buffer, childrenPrefix + "└── ", childrenPrefix + "    ");
-                } else {
-                    right.print(buffer, childrenPrefix + "└── ", childrenPrefix + "    ");
-                }
-            } else {
-                if (left != null) {
-                    left.print(buffer, childrenPrefix + "└── ", childrenPrefix + "    ");
-                }
-            }
         }
     }
 }
