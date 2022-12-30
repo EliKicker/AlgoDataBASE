@@ -1,7 +1,7 @@
 package Algorithms.DP;
 
 /*
-    LONGEST COMMON SUBSEQUENCE
+    LONGEST COMMON SUBSEQUENCE ALGORITHM
  */
 
 public class LCS {

@@ -8,14 +8,12 @@ package Datastructures;
 public class BST<T extends Comparable<T>> {
 
     Node<T> root;
-    int size;
 
     public BST() {
         root = null;
-        size = 0;
     }
 
-    //inserts element into BST
+    //inserts element into BST (if it is not already contained)
     //Runtime: O(n)
     public void insert(T key) {
         if (root == null) {
