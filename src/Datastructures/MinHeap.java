@@ -1,7 +1,7 @@
 package Datastructures;
 
 /*
-    MIN HEAP
+    MIN HEAP DATASTRUCTURE
  */
 
 //no avl condition needed as a heap is at every time either an almost complete tree or a complete tree

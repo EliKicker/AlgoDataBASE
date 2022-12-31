@@ -1,13 +1,13 @@
 package Datastructures;
 
 /*
-    BINARY SEARCH TREE
+    BINARY SEARCH TREE DATASTRUCTURE
  */
 
 //BST with no duplicates allowed
 public class BST<T extends Comparable<T>> {
 
-    Node<T> root;
+    protected Node<T> root;
 
     public BST() {
         root = null;
@@ -108,7 +108,6 @@ public class BST<T extends Comparable<T>> {
     //searches for given key in BST
     //Runtime: O(n)
     private Node<T> search(T key) {
-        if (root == null) return null;
         return search(root, key);
     }
 
@@ -126,7 +125,7 @@ public class BST<T extends Comparable<T>> {
         return sb.toString();
     }
 
-    private void Print(StringBuilder sb, Node<T> node, String prefix, String childrenPrefix) {
+    protected void Print(StringBuilder sb, Node<T> node, String prefix, String childrenPrefix) {
         if (node == null) return;
         if (prefix.endsWith("┌──")) {
             Print(sb, node.right, childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   ┌──", childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   │  ");
@@ -134,7 +133,7 @@ public class BST<T extends Comparable<T>> {
             Print(sb, node.right, childrenPrefix + "┌──", childrenPrefix + "│  ");
         }
         sb.append(prefix);
-        sb.append(node.key);
+        sb.append(node);
         sb.append("\n");
         if (prefix.endsWith("└──")) {
             Print(sb, node.left, childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   └──", childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   │  ");
@@ -143,7 +142,7 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
-    private class Node<E extends Comparable<E>> {
+    protected class Node<E extends Comparable<E>> {
 
         Node<E> parent;
         Node<E> left;
@@ -152,6 +151,11 @@ public class BST<T extends Comparable<T>> {
 
         Node(E key) {
             this.key = key;
+        }
+
+        @Override
+        public String toString() {
+            return key.toString();
         }
     }
 }

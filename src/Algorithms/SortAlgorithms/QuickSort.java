@@ -36,4 +36,16 @@ public class QuickSort {
         A[i] ^= A[r];
         return i;
     }
+
+    //quick select algorithm using median_of_medians
+    //Runtime: O(n)
+    private static int quickSelect() {
+        return -1;
+    }
+
+    //median_of_medians algorithm
+    //Runtime: O(n)
+    private static int median_of_medians() {
+        return -1;
+    }
 }
