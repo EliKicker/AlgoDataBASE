@@ -146,25 +146,17 @@ public class AVLTree<T extends Comparable<T>> {
         int bal = height(node.right) - height(node.left);
         if (bal < -1) {
             if (height(node.left.right) - height(node.left.left) <= 0) {
-                System.out.println("R + " + node.key);
                 if (root == node) {
                     root = rotateRight(node);
                     root.parent = null;
                 } else {
                     if (node == node.parent.left) {
                         node.parent.left = rotateRight(node);
-                        System.out.println(node.parent.key + " l-> " + node.parent.left.key);
-                        node.parent.left.parent = node.parent;
-                        System.out.println(node.parent.left.key + " p-> " + node.parent.key);
                     } else {
                         node.parent.right = rotateRight(node);
-                        System.out.println(node.parent.key + " r-> " + node.parent.right.key);
-                        node.parent.right.parent = node.parent;
-                        System.out.println(node.parent.right.key + " p-> " + node.parent.key);
                     }
                 }
             } else {
-                System.out.println("LR + " + node.key);
                 if (root == node) {
                     node.left = rotateLeft(node.left);
                     node.left.parent = node;
@@ -173,36 +165,27 @@ public class AVLTree<T extends Comparable<T>> {
                 } else {
                     if (node == node.parent.left) {
                         node.left = rotateLeft(node.left);
-                        node.left.parent = node;
                         node.parent.left = rotateRight(node);
-                        node.parent.left.parent = node.parent;
                     } else {
                         node.left = rotateLeft(node.left);
-                        node.left.parent = node;
                         node.parent.right = rotateRight(node);
-                        node.parent.right.parent = node.parent;
                     }
                 }
             }
         }
         if (bal > 1) {
             if (height(node.right.right) - height(node.right.left) >= 0) {
-                System.out.println("L + " + node.key);
                 if (root == node) {
                     root = rotateLeft(node);
                     root.parent = null;
                 } else {
                     if (node == node.parent.left) {
                         node.parent.left = rotateLeft(node);
-                        node.parent.left.parent = node.parent;
-                        System.out.println(node);
                     } else {
                         node.parent.right = rotateLeft(node);
-                        node.parent.right.parent = node.parent;
                     }
                 }
             } else {
-                System.out.println("RL + " + node.key);
                 if (root == node) {
                     node.right = rotateRight(node.right);
                     node.right.parent = node;
@@ -211,14 +194,10 @@ public class AVLTree<T extends Comparable<T>> {
                 } else {
                     if (node == node.parent.left) {
                         node.right = rotateRight(node.right);
-                        node.right.parent = node;
                         node.parent.left = rotateLeft(node);
-                        node.parent.left.parent = node.parent;
                     } else {
                         node.right = rotateRight(node.right);
-                        node.right.parent = node;
                         node.parent.right = rotateLeft(node);
-                        node.parent.right.parent = node.parent;
                     }
                 }
             }
@@ -230,6 +209,7 @@ public class AVLTree<T extends Comparable<T>> {
         node.left = tmp.right;
         if (tmp.right != null) tmp.right.parent = node;
         tmp.right = node;
+        tmp.parent = node.parent;
         node.parent = tmp;
         updateHeight(node);
         updateHeight(tmp);
@@ -241,6 +221,7 @@ public class AVLTree<T extends Comparable<T>> {
         node.right = tmp.left;
         if (tmp.left != null) tmp.left.parent = node;
         tmp.left = node;
+        tmp.parent = node.parent;
         node.parent = tmp;
         updateHeight(node);
         updateHeight(tmp);
@@ -285,7 +266,8 @@ public class AVLTree<T extends Comparable<T>> {
 
         @Override
         public String toString() {
-            return "key: " + key + ", parent: " + parent.key + ", left: " + left.key + ", right: " + right;
+            if (parent == null) return "key: " + key + ", parent: none";
+            return "key: " + key + ", parent: " + parent.key;
         }
     }
 }
