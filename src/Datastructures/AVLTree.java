@@ -4,6 +4,7 @@ package Datastructures;
     AVL TREE
  */
 
+//avl tree with no duplicated allowed
 public class AVLTree<T extends Comparable<T>> {
 
     Node<T> root;

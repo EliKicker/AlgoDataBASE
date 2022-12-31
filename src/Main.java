@@ -28,36 +28,5 @@ public class Main {
         //QuickSort.quickSort(B, 0, B.length - 1);
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
-
-        AVLTree<Integer> avl = new AVLTree<>();
-
-        avl.insert(50);
-        System.out.println(avl);
-        avl.insert(10);
-        System.out.println(avl);
-        avl.insert(60);
-        System.out.println(avl);
-        avl.insert(30);
-        System.out.println(avl);
-        avl.insert(40);
-        System.out.println(avl);
-        avl.insert(55);
-        System.out.println(avl);
-        avl.insert(80);
-        System.out.println(avl);
-        avl.insert(20);
-        System.out.println(avl);
-        avl.insert(12);
-        System.out.println(avl);
-        avl.insert(11);
-        System.out.println(avl);
-        avl.insert(9);
-        System.out.println(avl);
-        System.out.println("insert 42");
-        avl.insert(42);
-        System.out.println(avl);
-        System.out.println("delete 40");
-        avl.delete(40);
-        System.out.println(avl);
     }
 }
