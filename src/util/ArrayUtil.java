@@ -7,7 +7,7 @@ package util;
 import java.io.File;
 import java.util.Scanner;
 
-public class MakeArray {
+public class ArrayUtil {
 
     //get scanner for input file
     private static Scanner getInputFile(String path) {

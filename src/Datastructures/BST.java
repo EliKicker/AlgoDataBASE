@@ -7,7 +7,7 @@ package Datastructures;
 //BST with no duplicates allowed
 public class BST<T extends Comparable<T>> {
 
-    protected Node<T> root;
+    private Node<T> root;
 
     public BST() {
         root = null;
@@ -125,7 +125,7 @@ public class BST<T extends Comparable<T>> {
         return sb.toString();
     }
 
-    protected void Print(StringBuilder sb, Node<T> node, String prefix, String childrenPrefix) {
+    private void Print(StringBuilder sb, Node<T> node, String prefix, String childrenPrefix) {
         if (node == null) return;
         if (prefix.endsWith("┌──")) {
             Print(sb, node.right, childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   ┌──", childrenPrefix.substring(0, childrenPrefix.length() - 3) + "   │  ");
@@ -142,7 +142,7 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
-    protected class Node<E extends Comparable<E>> {
+    private class Node<E extends Comparable<E>> {
 
         Node<E> parent;
         Node<E> left;

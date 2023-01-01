@@ -146,61 +146,23 @@ public class AVLTree<T extends Comparable<T>> {
     private void rebalance(Node<T> node) {
         int bal = height(node.right) - height(node.left);
         if (bal < -1) {
-            if (height(node.left.right) - height(node.left.left) <= 0) {
-                if (root == node) {
-                    root = rotateRight(node);
-                    root.parent = null;
-                } else {
-                    if (node == node.parent.left) {
-                        node.parent.left = rotateRight(node);
-                    } else {
-                        node.parent.right = rotateRight(node);
-                    }
-                }
+            if (height(node.left.right) - height(node.left.left) > 0) {
+                rotateLeft(node.left);
+            }
+            if (root == node) {
+                root = rotateRight(node);
             } else {
-                if (root == node) {
-                    node.left = rotateLeft(node.left);
-                    node.left.parent = node;
-                    root = rotateRight(node);
-                    root.parent = null;
-                } else {
-                    if (node == node.parent.left) {
-                        node.left = rotateLeft(node.left);
-                        node.parent.left = rotateRight(node);
-                    } else {
-                        node.left = rotateLeft(node.left);
-                        node.parent.right = rotateRight(node);
-                    }
-                }
+                rotateRight(node);
             }
         }
         if (bal > 1) {
-            if (height(node.right.right) - height(node.right.left) >= 0) {
-                if (root == node) {
-                    root = rotateLeft(node);
-                    root.parent = null;
-                } else {
-                    if (node == node.parent.left) {
-                        node.parent.left = rotateLeft(node);
-                    } else {
-                        node.parent.right = rotateLeft(node);
-                    }
-                }
+            if (height(node.right.right) - height(node.right.left) < 0) {
+                rotateRight(node.right);
+            }
+            if (root == node) {
+                root = rotateLeft(node);
             } else {
-                if (root == node) {
-                    node.right = rotateRight(node.right);
-                    node.right.parent = node;
-                    root = rotateLeft(node);
-                    root.parent = null;
-                } else {
-                    if (node == node.parent.left) {
-                        node.right = rotateRight(node.right);
-                        node.parent.left = rotateLeft(node);
-                    } else {
-                        node.right = rotateRight(node.right);
-                        node.parent.right = rotateLeft(node);
-                    }
-                }
+                rotateLeft(node);
             }
         }
     }
@@ -210,11 +172,7 @@ public class AVLTree<T extends Comparable<T>> {
         node.left = tmp.right;
         if (tmp.right != null) tmp.right.parent = node;
         tmp.right = node;
-        tmp.parent = node.parent;
-        node.parent = tmp;
-        updateHeight(node);
-        updateHeight(tmp);
-        return tmp;
+        return updateParents(node, tmp);
     }
 
     private Node<T> rotateLeft(Node<T> node) {
@@ -222,7 +180,15 @@ public class AVLTree<T extends Comparable<T>> {
         node.right = tmp.left;
         if (tmp.left != null) tmp.left.parent = node;
         tmp.left = node;
+        return updateParents(node, tmp);
+    }
+
+    private Node<T> updateParents(Node<T> node, Node<T> tmp) {
         tmp.parent = node.parent;
+        if (node.parent != null) {
+            if (node == node.parent.left) node.parent.left = tmp;
+            else node.parent.right = tmp;
+        }
         node.parent = tmp;
         updateHeight(node);
         updateHeight(tmp);
@@ -263,12 +229,6 @@ public class AVLTree<T extends Comparable<T>> {
 
         Node(E key) {
             this.key = key;
-        }
-
-        @Override
-        public String toString() {
-            if (parent == null) return "key: " + key + ", parent: none";
-            return "key: " + key + ", parent: " + parent.key;
         }
     }
 }

@@ -1,11 +1,6 @@
-import Algorithms.GraphAlgorithms.*;
-import Algorithms.*;
-import Algorithms.SearchAlgorithms.*;
-import Algorithms.SortAlgorithms.*;
-import Datastructures.*;
-import Datastructures.Graphs.UnionFind;
-import util.MakeArray;
-import util.MakeGraph;
+import Algorithms.GraphAlgorithms.TopoSort;
+import util.ArrayUtil;
+import util.GraphUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,13 +15,16 @@ public class Main {
         System.out.println();
         BFS.BFS(G, 0);*/
 
-        int[] A = MakeArray.getArray("src/util/test_input/ArrayDistinctIntegers1");
+        int[] A = ArrayUtil.getArray("src/util/test_input/ArrayDistinctIntegers1");
         System.out.println(Arrays.toString(A));
-        int[] B = MakeArray.getArray("src/util/test_input/ArrayWithDuplicates1");
+        int[] B = ArrayUtil.getArray("src/util/test_input/ArrayWithDuplicates1");
         System.out.println(Arrays.toString(B));
         //QuickSort.quickSort(A, 0, A.length - 1);
         //QuickSort.quickSort(B, 0, B.length - 1);
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
+
+        ArrayList<ArrayList<Integer>> G = GraphUtil.getAdjListUnweighted("src/util/test_input/AcyclicUnweightedGraph1");
+        System.out.println(Arrays.toString(TopoSort.topoSort(G)));
     }
 }
