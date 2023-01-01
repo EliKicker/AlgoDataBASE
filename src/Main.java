@@ -1,3 +1,4 @@
+import Algorithms.GraphAlgorithms.Dijkstra;
 import Algorithms.GraphAlgorithms.TopoSort;
 import util.ArrayUtil;
 import util.GraphUtil;
@@ -24,7 +25,11 @@ public class Main {
         System.out.println("\n" + Arrays.toString(A));
         System.out.println(Arrays.toString(B));
 
-        ArrayList<ArrayList<Integer>> G = GraphUtil.getAdjListUnweighted("src/util/test_input/AcyclicUnweightedGraph1");
-        System.out.println(Arrays.toString(TopoSort.topoSort(G)));
+        //ArrayList<ArrayList<Integer>> G = GraphUtil.getAdjListUnweighted("src/util/test_input/AcyclicUnweightedGraph1");
+        //System.out.println(Arrays.toString(TopoSort.topoSort(G)));
+
+        ArrayList<ArrayList<Integer>> G = new ArrayList<>();
+        int[][] weights = GraphUtil.getAdjListWeighted("src/util/test_input/PositiveWeightedGraph1", G);
+        System.out.println(Arrays.toString(Dijkstra.dijkstra(G, weights, 0)));
     }
 }

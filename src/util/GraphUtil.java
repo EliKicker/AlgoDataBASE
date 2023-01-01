@@ -22,7 +22,30 @@ public class GraphUtil {
         }
     }
 
-    //return graph in form of an adjacency list
+    public static int[][] getAdjListWeighted(String input_path, ArrayList<ArrayList<Integer>> G) {
+        Scanner input = getInputFile(input_path);
+        if (input != null) {
+            int n = input.nextInt();
+            int m = input.nextInt();
+            int[][] weights = new int[n][n];
+
+            for (int i = 0; i < n; i++) {
+                G.add(new ArrayList<>());
+            }
+
+            for (int i = 0; i < m; i++) {
+                int from = input.nextInt();
+                int to = input.nextInt();
+                G.get(from).add(to);
+                weights[from][to] = input.nextInt();
+            }
+
+            return weights;
+        }
+        return null;
+    }
+
+    //return unweighted graph in form of an adjacency list
     public static ArrayList<ArrayList<Integer>> getAdjListUnweighted(String input_path) {
         Scanner input = getInputFile(input_path);
         if (input != null) {
