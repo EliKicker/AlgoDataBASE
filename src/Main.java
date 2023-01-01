@@ -1,3 +1,4 @@
+import Algorithms.GraphAlgorithms.BellmanFord;
 import Algorithms.GraphAlgorithms.Dijkstra;
 import Algorithms.GraphAlgorithms.TopoSort;
 import util.ArrayUtil;
@@ -28,8 +29,11 @@ public class Main {
         //ArrayList<ArrayList<Integer>> G = GraphUtil.getAdjListUnweighted("src/util/test_input/AcyclicUnweightedGraph1");
         //System.out.println(Arrays.toString(TopoSort.topoSort(G)));
 
-        ArrayList<ArrayList<Integer>> G = new ArrayList<>();
-        int[][] weights = GraphUtil.getAdjListWeighted("src/util/test_input/PositiveWeightedGraph1", G);
-        System.out.println(Arrays.toString(Dijkstra.dijkstra(G, weights, 0)));
+        int[] edges1 = new int[10];
+        int[] edges2 = new int[10];
+        int[] edge_weights = new int[10];
+        int n = 7;
+        GraphUtil.getEdgeArrayWeighted("src/util/test_input/WeightedGraph1", edges1, edges2, edge_weights);
+        System.out.println(Arrays.toString(BellmanFord.bellmanFord(edges1, edges2, edge_weights, 0, n)));
     }
 }

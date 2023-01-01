@@ -22,6 +22,20 @@ public class GraphUtil {
         }
     }
 
+    public static void getEdgeArrayWeighted(String input_path, int[] edges1, int[] edges2, int[] edge_weights) {
+        Scanner input = getInputFile(input_path);
+        if (input != null) {
+            int n = input.nextInt();
+            int m = input.nextInt();
+
+            for (int i = 0; i < m; i++) {
+                edges1[i] = input.nextInt();
+                edges2[i] = input.nextInt();
+                edge_weights[i] = input.nextInt();
+            }
+        }
+    }
+
     public static int[][] getAdjListWeighted(String input_path, ArrayList<ArrayList<Integer>> G) {
         Scanner input = getInputFile(input_path);
         if (input != null) {
