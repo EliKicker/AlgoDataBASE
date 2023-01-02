@@ -1,7 +1,4 @@
-import Algorithms.GraphAlgorithms.BellmanFord;
-import Algorithms.GraphAlgorithms.Boruvka;
-import Algorithms.GraphAlgorithms.Dijkstra;
-import Algorithms.GraphAlgorithms.TopoSort;
+import Algorithms.GraphAlgorithms.*;
 import util.ArrayUtil;
 import util.GraphUtil;
 
@@ -32,6 +29,6 @@ public class Main {
 
         ArrayList<ArrayList<Integer>> G = new ArrayList<>();
         int[][] weights = GraphUtil.getAdjListWeighted("src/util/test_input/WeightedGraph2", G);
-        System.out.println(Boruvka.boruvka(G, weights));
+        System.out.println(Prim.prim(G, weights, 0));
     }
 }

@@ -7,7 +7,6 @@ package Algorithms.GraphAlgorithms;
 import Datastructures.Graphs.UnionFind;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Boruvka {
 
@@ -40,7 +39,6 @@ public class Boruvka {
 
             for (int i = 0; i < cheapest.length; i++) {
                 if (cheapest[i] != null && ZHKs.find(cheapest[i].node1) != ZHKs.find(cheapest[i].node2)) {
-                    System.out.println("unify " + cheapest[i]);
                     ZHKs.union(cheapest[i].node1, cheapest[i].node2);
                     mst.add(cheapest[i]);
                     n_ZHKs--;
@@ -62,11 +60,6 @@ public class Boruvka {
             this.node1 = node1;
             this.node2 = node2;
             this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return node1 + " -> " + node2 + " w: " + weight;
         }
     }
 }
