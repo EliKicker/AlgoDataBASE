@@ -5,7 +5,6 @@ package Algorithms.GraphAlgorithms;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Johnson {
 
@@ -50,10 +49,10 @@ public class Johnson {
             distances[i] = Dijkstra.dijkstra(G, new_weights, i);
         }
 
-        //correct distances ( O(n²) )
+        //correct distances
         //just for comparison with floyd-warshall
         for (int i = 0; i < G.size(); i++) {
-            for (int j = 0; j < G.size(); j++) {
+            for (int j : G.get(i)) {
                 distances[i][j] = distances[i][j] + h[j] - h[i];
             }
         }

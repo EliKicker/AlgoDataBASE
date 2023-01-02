@@ -4,8 +4,6 @@ package Algorithms.GraphAlgorithms;
     BELLMAN-FORD ALGORITHM
  */
 
-import java.util.ArrayList;
-
 public class BellmanFord {
 
     //bellman-ford algorithm

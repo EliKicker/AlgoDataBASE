@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.DP;
 
 /*
     MAXIMUM SUBARRAY SUM ALGORITHM
@@ -8,7 +8,7 @@ public class MSS {
 
     //maximum subarray sum algorithm
     //Runtime: O(n)
-    public static int MSS(int[] A) {
+    public static int mss(int[] A) {
         int mss = 0;
         int tmp = 0;
         for (int i = 0; i < A.length; i++) {
