@@ -15,7 +15,7 @@ public class Dijkstra {
         PriorityQueue<Node> queue = new PriorityQueue<>();
         boolean[] visited = new boolean[G.size()];
         int[] d = new int[G.size()];
-        for (int i = 0; i < G.size(); i++) d[i] = ~0 >>> 1;
+        for (int i = 0; i < G.size(); i++) d[i] = 10000000;
         d[x] = 0;
         queue.add(new Node(x, 0));
 

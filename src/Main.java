@@ -28,7 +28,18 @@ public class Main {
         //System.out.println(Arrays.toString(TopoSort.topoSort(G)));
 
         ArrayList<ArrayList<Integer>> G = new ArrayList<>();
-        int[][] weights = GraphUtil.getAdjListWeighted("src/util/test_input/WeightedGraph2", G);
-        System.out.println(Prim.prim(G, weights, 0));
+        int[][] weights = GraphUtil.getAdjListWeighted("src/util/test_input/WeightedGraph4", G);
+
+        System.out.println("\nFLOYD-WARSHALL");
+        int[][][] result1 = FloydWarshall.floydWarshall(G, weights);
+        for (int i = 0; i < G.size(); i++) {
+            System.out.println(Arrays.toString(result1[result1.length - 1][i]));
+        }
+
+        System.out.println("\nJOHNSON:");
+        int[][] result2 =  Johnson.johnson(G, weights);
+        for (int i = 0; i < result2.length; i++) {
+            System.out.println(Arrays.toString(result2[i]));
+        }
     }
 }
