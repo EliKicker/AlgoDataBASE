@@ -20,7 +20,7 @@ public class ArrayUtil {
     }
 
     //return graph in form of an adjacency list
-    public static int[] getArray(String input_path) {
+    public static int[] getIntArray(String input_path) {
         Scanner input = getInputFile(input_path);
         if (input != null) {
             int n = input.nextInt();                                //number of elements
@@ -28,6 +28,21 @@ public class ArrayUtil {
 
             for (int i = 0; i < n; i++) {
                 A[i] = input.nextInt();
+            }
+
+            return A;
+        }
+        return null;
+    }
+
+    public static char[] getLetterArray(String input_path) {
+        Scanner input = getInputFile(input_path);
+        if (input != null) {
+            int n = input.nextInt();
+            char[] A = new char[n];
+
+            for (int i = 0; i < n; i++) {
+                A[i] = input.next("[a-zA-Z]").charAt(0);
             }
 
             return A;

@@ -4,8 +4,6 @@ package Algorithms.SortAlgorithms;
     QUICK SORT ALGORITHM
  */
 
-import java.util.Arrays;
-
 public class QuickSort {
 
     //quick sort algorithm (chooses right most pivot which can lead wort case to O(n²) runtime)

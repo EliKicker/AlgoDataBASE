@@ -4,8 +4,6 @@ package Algorithms.DP;
     LONGEST INCREASING SUBSEQUENCE ALGORITHM
  */
 
-import java.util.Arrays;
-
 public class LIS {
 
     //longest increasing subsequence algorithm
